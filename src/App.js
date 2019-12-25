@@ -1,26 +1,41 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import FoldersWrapper from './components/FoldersWrapper/FoldersWrapper'
+import NotesWrapper from './components/NotesWrapper/NotesWrapper'
+import Preview from './components/Preview/Preview'
+
+const initialStateNotes = [
+  {
+    content: 'Need to buy something',
+    folder: 'School'
+  },
+  {
+    content: 'Lalalalal',
+    folder: 'Random'
+  },
+  {
+    content: 'Trrrrrrr',
+    folder: 'Random'
+  }
+]
+
+const initialStateFolders = ['All notes', 'School', 'Random', 'Another notes']
+
+class App extends React.Component {
+  state = {
+    notes: [...initialStateNotes],
+    folders: [...initialStateFolders]
+  }
+
+  render () {
+    return (
+      <div className='App'>
+        <FoldersWrapper folders={this.state.folders} />
+        <NotesWrapper notes={this.state.notes} />
+        <Preview />
+      </div>
+    )
+  }
 }
 
-export default App;
+export default App
