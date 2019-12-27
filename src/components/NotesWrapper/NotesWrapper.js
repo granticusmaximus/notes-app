@@ -19,7 +19,9 @@ const NotesWrapper = ({
           onClick={() => selectNoteFn(note.id)}
         >
           <>
-            <p className={styles.thumbnailHeader}>{note.content}</p>
+            <p className={styles.thumbnailHeader}>
+              {`${note.content.length > 25 ? note.content.slice(0, 25) + '...' : note.content}`}
+            </p>
             <p className={styles.thumbnailDate}>20/09/2019 14:09</p>
           </>
         </Link>
