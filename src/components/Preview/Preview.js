@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import moment from 'moment'
 
 import styles from './Preview.module.scss'
 
@@ -11,14 +12,16 @@ const Preview = ({
     {
       note ? (
         <>
-          <p className={styles.date}>20/09/2019 14.07</p>
+          <p className={styles.date}>
+            {moment(note.editDate).format('DD MMMM YYYY HH:mm')}
+          </p>
           <textarea
             className={styles.content}
             value={note.content}
             onChange={editFn}
           />
         </>
-      ) : ('Ni ma nic')
+      ) : ('Nothing to display')
     }
   </div>
 )

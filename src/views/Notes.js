@@ -8,22 +8,26 @@ const initialStateNotes = [
   {
     content: 'Need to buy something',
     folder: 'school',
-    id: 124111251
+    id: 124111251,
+    editDate: new Date()
   },
   {
     content: 'Lalalalal',
     folder: 'random',
-    id: 7458457334
+    id: 7458457334,
+    editDate: new Date()
   },
   {
     content: 'Trrrrrrr',
     folder: 'random',
-    id: 908623682
+    id: 908623682,
+    editDate: new Date()
   },
   {
     content: 'Blaka blaka blaka',
     folder: 'another',
-    id: 239852398888
+    id: 239852398888,
+    editDate: new Date()
   }
 ]
 
@@ -51,7 +55,7 @@ class Notes extends React.Component {
     notes: [...initialStateNotes],
     folders: [...initialStateFolders],
     current: {
-      folder: null,
+      folder: 'all',
       note: null
     }
   }
@@ -79,6 +83,7 @@ class Notes extends React.Component {
 
     const notesToEdit = notesCopy.findIndex((note) => note.id === this.state.current.note)
     notesCopy[notesToEdit].content = e.target.value
+    notesCopy[notesToEdit].editDate = new Date()
 
     this.setState({
       notes: [...notesCopy]
@@ -91,6 +96,16 @@ class Notes extends React.Component {
     } else return (this.state.notes).filter((note) => note.folder === this.state.current.folder)
   }
 
+  addNote = (note) => {
+    this.setState(prevState => ({
+      notes: [...prevState.notes, note],
+      current: {
+        ...prevState.current,
+        note: note.id
+      }
+    }))
+  }
+
   render () {
     return (
       <div className='App'>
@@ -100,6 +115,7 @@ class Notes extends React.Component {
           selectFolderFn={this.selectFolder}
         />
         <NotesWrapper
+          addNoteFn={this.addNote}
           current={this.state.current}
           notes={this.filterNotes()}
           selectNoteFn={this.selectNote}
