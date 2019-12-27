@@ -85,6 +85,12 @@ class Notes extends React.Component {
     })
   }
 
+  filterNotes = () => {
+    if (this.state.current.folder === 'all') {
+      return this.state.notes
+    } else return (this.state.notes).filter((note) => note.folder === this.state.current.folder)
+  }
+
   render () {
     return (
       <div className='App'>
@@ -94,8 +100,8 @@ class Notes extends React.Component {
           selectFolderFn={this.selectFolder}
         />
         <NotesWrapper
-          currentNote={this.state.current.note}
-          notes={(this.state.notes).filter((note) => note.folder === this.state.current.folder)}
+          current={this.state.current}
+          notes={this.filterNotes()}
           selectNoteFn={this.selectNote}
         />
         <Preview
