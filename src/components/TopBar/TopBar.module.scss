@@ -1,0 +1,35 @@
+.topbar {
+  height: 36px;
+  background: rgb(240,240,240);
+  // background: linear-gradient(180deg, rgba(240,240,240,1) 0%, rgba(227,227,227,1) 35%, rgba(209,209,209,1) 100%);
+  background: linear-gradient(180deg, rgba(240,240,240,1) 0%, rgba(233,233,233,1) 35%, rgba(221,221,221,1) 100%);
+  border: 1px solid #c5c5c5;
+  border-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.dotsWrapper {
+  display: flex;
+  margin-left: 12px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  margin-right: 7px;
+  border: 1px solid #dedede;
+
+  &__red {
+    background-color: rgb(255, 69, 58);
+  }
+
+  &__yellow {
+    background-color: rgb(255, 214, 10);
+  }
+
+  &__green {
+    background-color: rgb(50, 215, 75);
+  }
+}

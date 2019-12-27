@@ -1,8 +1,11 @@
 import React from 'react'
 
+import styles from './Notes.module.scss'
+
 import FoldersWrapper from '../components/FoldersWrapper/FoldersWrapper'
 import NotesWrapper from '../components/NotesWrapper/NotesWrapper'
 import Preview from '../components/Preview/Preview'
+import TopBar from '../components/TopBar/TopBar'
 
 const initialStateNotes = [
   {
@@ -108,22 +111,27 @@ class Notes extends React.Component {
 
   render () {
     return (
-      <div className='App'>
-        <FoldersWrapper
-          currentFolder={this.state.current.folder}
-          folders={this.state.folders}
-          selectFolderFn={this.selectFolder}
-        />
-        <NotesWrapper
-          addNoteFn={this.addNote}
-          current={this.state.current}
-          notes={this.filterNotes()}
-          selectNoteFn={this.selectNote}
-        />
-        <Preview
-          note={(this.state.notes).find((note) => note.id === this.state.current.note)}
-          editFn={this.editNote}
-        />
+      <div className={styles.desktop}>
+        <div className={styles.appWrapper}>
+          <TopBar />
+          <div className={styles.viewWrapper}>
+            <FoldersWrapper
+              currentFolder={this.state.current.folder}
+              folders={this.state.folders}
+              selectFolderFn={this.selectFolder}
+            />
+            <NotesWrapper
+              addNoteFn={this.addNote}
+              current={this.state.current}
+              notes={this.filterNotes()}
+              selectNoteFn={this.selectNote}
+            />
+            <Preview
+              note={(this.state.notes).find((note) => note.id === this.state.current.note)}
+              editFn={this.editNote}
+            />
+          </div>
+        </div>
       </div>
     )
   }
