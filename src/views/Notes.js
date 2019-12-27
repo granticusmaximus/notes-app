@@ -57,12 +57,12 @@ class Notes extends React.Component {
   }
 
   selectFolder = (folder) => {
-    this.setState(prevState => ({
+    this.setState({
       current: {
-        ...prevState.current,
-        folder: folder
+        folder: folder,
+        note: null
       }
-    }))
+    })
   }
 
   selectNote = (note) => {
