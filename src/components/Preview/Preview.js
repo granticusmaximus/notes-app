@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import styles from './Preview.module.scss'
 
 const Preview = ({
+  editFn,
   note
 }) => (
   <div className={styles.preview}>
@@ -14,6 +15,7 @@ const Preview = ({
           <textarea
             className={styles.content}
             value={note.content}
+            onChange={editFn}
           />
         </>
       ) : ('Ni ma nic')
@@ -22,6 +24,7 @@ const Preview = ({
 )
 
 Preview.propTypes = {
+  editFn: PropTypes.func,
   note: PropTypes.object
 }
 

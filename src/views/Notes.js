@@ -74,6 +74,17 @@ class Notes extends React.Component {
     }))
   }
 
+  editNote = (e) => {
+    const notesCopy = this.state.notes
+
+    const notesToEdit = notesCopy.findIndex((note) => note.id === this.state.current.note)
+    notesCopy[notesToEdit].content = e.target.value
+
+    this.setState({
+      notes: [...notesCopy]
+    })
+  }
+
   render () {
     return (
       <div className='App'>
@@ -89,6 +100,7 @@ class Notes extends React.Component {
         />
         <Preview
           note={(this.state.notes).find((note) => note.id === this.state.current.note)}
+          editFn={this.editNote}
         />
       </div>
     )
