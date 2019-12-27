@@ -1,10 +1,26 @@
 import React from 'react'
-// import PropTypes from 'prop-types'
+import PropTypes from 'prop-types'
 
-// import styles from './NotesWrapper.module.scss'
+import styles from './Preview.module.scss'
 
-const Preview = () => (
-  <p>Preview</p>
+const Preview = ({
+  note
+}) => (
+  <div className={styles.preview}>
+    {
+      note ? (
+        <>
+          <p>{note.content}</p>
+          <p>{note.id}</p>
+          <p>{note.folder}</p>
+        </>
+      ) : ('Ni ma nic')
+    }
+  </div>
 )
+
+Preview.propTypes = {
+  note: PropTypes.object
+}
 
 export default Preview

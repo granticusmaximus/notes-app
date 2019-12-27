@@ -1,39 +1,25 @@
 import React from 'react'
+import {
+  BrowserRouter,
+  Redirect,
+  Route,
+  Switch
+} from 'react-router-dom'
 
-import FoldersWrapper from './components/FoldersWrapper/FoldersWrapper'
-import NotesWrapper from './components/NotesWrapper/NotesWrapper'
-import Preview from './components/Preview/Preview'
-
-const initialStateNotes = [
-  {
-    content: 'Need to buy something',
-    folder: 'School'
-  },
-  {
-    content: 'Lalalalal',
-    folder: 'Random'
-  },
-  {
-    content: 'Trrrrrrr',
-    folder: 'Random'
-  }
-]
-
-const initialStateFolders = ['All notes', 'School', 'Random', 'Another notes']
+import Notes from './views/Notes'
 
 class App extends React.Component {
-  state = {
-    notes: [...initialStateNotes],
-    folders: [...initialStateFolders]
-  }
-
   render () {
     return (
-      <div className='App'>
-        <FoldersWrapper folders={this.state.folders} />
-        <NotesWrapper notes={this.state.notes} />
-        <Preview />
-      </div>
+      <BrowserRouter>
+        <Switch>
+          <Route
+            path={['/notes', '/notes/:folder', '/notes/:folder/:note_id']}
+            component={Notes}
+          />
+        </Switch>
+        {/* <Redirect from='/' to='/notes' /> */}
+      </BrowserRouter>
     )
   }
 }

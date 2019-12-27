@@ -10,4 +10,16 @@
   font-weight: 300;
   font-size: 14px;
   line-height: 16px;
+  color: #000;
+  display: block;
+
+  &:hover {
+    text-decoration: none !important;
+    color: currentColor;
+  }
+}
+
+.folderLabelActive {
+  @extend .folderLabel;
+  background-color: #c3c3c3;
 }
