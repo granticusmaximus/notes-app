@@ -10,9 +10,11 @@ const Preview = ({
     {
       note ? (
         <>
-          <p>{note.content}</p>
-          <p>{note.id}</p>
-          <p>{note.folder}</p>
+          <p className={styles.date}>20/09/2019 14.07</p>
+          <textarea
+            className={styles.content}
+            value={note.content}
+          />
         </>
       ) : ('Ni ma nic')
     }
