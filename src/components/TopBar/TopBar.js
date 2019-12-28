@@ -1,14 +1,14 @@
 import React from 'react'
 
+import Dots from './components/Dots/Dots'
+import Search from './components/Search/Search'
+
 import styles from './TopBar.module.scss'
 
 const TopBar = () => (
   <div className={styles.topbar}>
-    <div className={styles.dotsWrapper}>
-      <div className={`${styles.dot} ${styles.dot__red}`} />
-      <div className={`${styles.dot} ${styles.dot__yellow}`} />
-      <div className={`${styles.dot} ${styles.dot__green}`} />
-    </div>
+    <Dots />
+    <Search />
   </div>
 )
 
