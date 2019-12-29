@@ -82,7 +82,7 @@ class Notes extends React.Component {
   }
 
   editNote = (e) => {
-    const notesCopy = this.state.notes
+    const notesCopy = [...this.state.notes]
 
     const notesToEdit = notesCopy.findIndex((note) => note.id === this.state.current.note)
     notesCopy[notesToEdit].content = e.target.value
@@ -109,11 +109,27 @@ class Notes extends React.Component {
     }))
   }
 
+  deleteNote = () => {
+    const notes = [...this.state.notes]
+    const noteToDelete = notes.findIndex((note) => note.id === this.state.current.note)
+
+    if (noteToDelete !== -1) {
+      notes.splice(noteToDelete, 1)
+      this.setState({
+        notes: notes
+      })
+    }
+  }
+
   render () {
     return (
       <div className={styles.desktop}>
         <div className={styles.appWrapper}>
-          <TopBar />
+          <TopBar
+            addNoteFn={this.addNote}
+            current={this.state.current}
+            deleteNoteFn={this.deleteNote}
+          />
           <div className={styles.viewWrapper}>
             <FoldersWrapper
               currentFolder={this.state.current.folder}

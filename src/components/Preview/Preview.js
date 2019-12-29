@@ -10,7 +10,7 @@ const Preview = ({
 }) => (
   <div className={styles.preview}>
     {
-      note ? (
+      note &&
         <>
           <p className={styles.date}>
             {moment(note.editDate).format('DD MMMM YYYY HH:mm')}
@@ -21,7 +21,6 @@ const Preview = ({
             onChange={editFn}
           />
         </>
-      ) : ('Nothing to display')
     }
   </div>
 )
