@@ -121,6 +121,12 @@ class Notes extends React.Component {
     }
   }
 
+  addFolder = (folder) => {
+    this.setState(prevState => ({
+      folders: [...prevState.folders, folder]
+    }))
+  }
+
   render () {
     return (
       <div className={styles.desktop}>
@@ -135,6 +141,7 @@ class Notes extends React.Component {
               currentFolder={this.state.current.folder}
               folders={this.state.folders}
               selectFolderFn={this.selectFolder}
+              addFolderFn={this.addFolder}
             />
             <NotesWrapper
               addNoteFn={this.addNote}
