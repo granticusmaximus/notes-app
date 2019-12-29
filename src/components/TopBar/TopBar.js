@@ -16,13 +16,10 @@ const TopBar = ({
   <div className={styles.topbar}>
     <Dots />
     <div className='d-flex'>
-      {
-        current.folder !== 'all' &&
-          <AddNoteBtn
-            addNoteFn={addNoteFn}
-            current={current}
-          />
-      }
+      <AddNoteBtn
+        addNoteFn={addNoteFn}
+        current={current}
+      />
       <DeleteNoteBtn
         current={current}
         deleteNoteFn={deleteNoteFn}

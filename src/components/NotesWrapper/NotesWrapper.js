@@ -32,7 +32,7 @@ const NotesWrapper = ({
               current.folder === 'all' &&
                 <div className={styles.thumbnailFolder}>
                   <i className='fa fa-folder-o' />
-                  <span>{note.folder}</span>
+                  <span>{note.folder === 'all' ? 'Notes' : note.folder}</span>
                 </div>
             }
           </>

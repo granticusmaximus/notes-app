@@ -36,7 +36,7 @@ const initialStateNotes = [
 
 const initialStateFolders = [
   {
-    name: 'All notes',
+    name: 'Notes',
     url: 'all'
   },
   {
