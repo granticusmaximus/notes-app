@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import React from 'react'
 
+import Folder from './components/Folder'
+
 import styles from './FoldersWrapper.module.scss'
 
 const FoldersWrapper = ({
@@ -12,16 +14,22 @@ const FoldersWrapper = ({
   <div className={styles.wrapper}>
     {
       folders.map(folder => (
-        <Link
-          className={folder.url === currentFolder ? styles.folderLabelActive : styles.folderLabel}
+        <Folder
           key={folder.url}
-          to={`/notes/${folder.url}`}
-          onClick={() => selectFolderFn(folder.url)}
-        >
-          {folder.name}
-        </Link>
+          currentFolder={currentFolder}
+          folder={folder}
+          selectFolderFn={selectFolderFn}
+        />
       ))
     }
+    <button
+      className={styles.addBtn}
+    >
+      <div className={styles.addBtnIcon}>
+        +
+      </div>
+      <div className={styles.addBtnCaption}>New folder</div>
+    </button>
   </div>
 )
 

@@ -23,3 +23,36 @@
   @extend .folderLabel;
   background-color: #c3c3c3;
 }
+
+.addBtn {
+  border: 0;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  padding: 0 16px;
+
+  &:focus {
+    outline: 0;
+  }
+}
+
+.addBtnIcon {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: gray;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 100;
+  color: #fff;
+  font-size: 14px;
+  margin-right: 4px;
+}
+
+.addBtnCaption {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 400;
+  color: #5a5a5a;
+}

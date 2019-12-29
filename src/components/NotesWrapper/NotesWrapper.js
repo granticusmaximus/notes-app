@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import uniqid from 'uniqid'
 import moment from 'moment'
 
 import styles from './NotesWrapper.module.scss'
@@ -38,23 +37,6 @@ const NotesWrapper = ({
           </>
         </Link>
       ))
-    }
-    {
-      current.folder !== 'all' &&
-        <button
-          className={styles.addBtn}
-          onClick={() => addNoteFn({
-            content: 'New note',
-            folder: current.folder,
-            id: uniqid(),
-            editDate: new Date()
-          })}
-        >
-          <div className={styles.addBtnIcon}>
-            +
-          </div>
-          <div className={styles.addBtnCaption}>New item</div>
-        </button>
     }
   </div>
 )
