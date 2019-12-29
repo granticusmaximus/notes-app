@@ -14,8 +14,10 @@ const TopBar = ({
   deleteNoteFn
 }) => (
   <div className={styles.topbar}>
-    <Dots />
-    <div className='d-flex'>
+    <div className={styles.dotsContainer}>
+      <Dots />
+    </div>
+    <div className={styles.buttonsContainer}>
       <AddNoteBtn
         addNoteFn={addNoteFn}
         current={current}
@@ -24,6 +26,8 @@ const TopBar = ({
         current={current}
         deleteNoteFn={deleteNoteFn}
       />
+    </div>
+    <div className={styles.searchContainer}>
       <Search />
     </div>
   </div>
