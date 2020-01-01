@@ -21,7 +21,7 @@ const NotesWrapper = ({
           <Link
             className={note.id === current.note ? styles.thumbnailActive : styles.thumbnail}
             key={note.id}
-            to={`/notes/${note.folder}/${note.id}`}
+            to={`/${note.folder}/${note.id}`}
             onClick={() => selectNoteFn(note.id)}
           >
             <>

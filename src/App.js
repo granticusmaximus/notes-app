@@ -14,11 +14,11 @@ class App extends React.Component {
       <BrowserRouter>
         <Switch>
           <Route
-            path={['/notes/:folder/:note_id', '/notes/:folder', '/notes']}
+            path={['/:folder/:note_id', '/:folder', '/']}
             component={Notes}
           />
         </Switch>
-        <Redirect from='/' to='/notes/notes' />
+        <Redirect from='/' to='/notes/' />
       </BrowserRouter>
     )
   }

@@ -12,7 +12,7 @@ const Folder = ({
   <Link
     className={folder.url === currentFolder ? styles.folderLabelActive : styles.folderLabel}
     key={folder.url}
-    to={`/notes/${folder.url}`}
+    to={`/${folder.url}`}
     onClick={() => selectFolderFn(folder.url)}
   >
     {folder.name}
