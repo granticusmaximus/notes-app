@@ -18,7 +18,7 @@ class App extends React.Component {
             component={Notes}
           />
         </Switch>
-        <Redirect from='/' to='/notes/all' />
+        <Redirect from='/' to='/notes/notes' />
       </BrowserRouter>
     )
   }

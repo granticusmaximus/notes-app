@@ -4,23 +4,12 @@ import PropTypes from 'prop-types'
 import styles from './Search.module.scss'
 
 class Search extends React.Component {
-  state = {
-    value: ''
-  }
-
   handleChange = (e) => {
-    this.setState({
-      value: e.target.value
-    })
-
-    this.props.filterNotesFn(e.target.value)
+    this.props.searchNotesFn(e.target.value)
   }
 
   handleClearInput = () => {
-    this.setState({
-      value: ''
-    })
-    this.props.filterNotesFn('')
+    this.props.searchNotesFn('')
   }
 
   render () {
@@ -34,10 +23,10 @@ class Search extends React.Component {
           type='text'
           placeholder='Search'
           onChange={this.handleChange}
-          value={this.state.value}
+          value={this.props.searchPhrase}
         />
         {
-          this.state.value !== '' &&
+          this.props.searchPhrase !== '' &&
             <i
               onClick={this.handleClearInput}
               className={`${styles.inputReset} fas fa-times-circle`}
@@ -49,7 +38,8 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  filterNotesFn: PropTypes.func.isRequired
+  searchNotesFn: PropTypes.func.isRequired,
+  searchPhrase: PropTypes.string.isRequired
 }
 
 export default Search

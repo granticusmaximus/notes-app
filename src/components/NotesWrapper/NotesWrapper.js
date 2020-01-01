@@ -7,12 +7,12 @@ import styles from './NotesWrapper.module.scss'
 
 const NotesWrapper = ({
   current,
-  filterPhrase,
+  searchPhrase,
   notes,
   selectNoteFn
 }) => {
-  let notesToRender = current.folder === 'all' ? notes : notes.filter((note) => note.folder === current.folder)
-  notesToRender = notesToRender.filter((note) => note.content.includes(filterPhrase))
+  let notesToRender = current.folder === 'notes' ? notes : notes.filter((note) => note.folder === current.folder)
+  notesToRender = notesToRender.filter((note) => note.content.includes(searchPhrase))
 
   return (
     <div className={styles.wrapper}>
@@ -32,10 +32,10 @@ const NotesWrapper = ({
                 {moment(note.editDate).format('DD.MM.YYYY')}
               </p>
               {
-                current.folder === 'all' &&
+                current.folder === 'notes' &&
                   <div className={styles.thumbnailFolder}>
                     <i className='fa fa-folder-o' />
-                    <span>{note.folder === 'all' ? 'Notes' : note.folder}</span>
+                    <span>{note.folder}</span>
                   </div>
               }
             </>
@@ -48,7 +48,7 @@ const NotesWrapper = ({
 
 NotesWrapper.propTypes = {
   current: PropTypes.object,
-  filterPhrase: PropTypes.string,
+  searchPhrase: PropTypes.string,
   notes: PropTypes.array.isRequired,
   selectNoteFn: PropTypes.func.isRequired
 }

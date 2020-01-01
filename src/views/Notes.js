@@ -61,7 +61,7 @@ const initialStateNotes = [
 const initialStateFolders = [
   {
     name: 'Notes',
-    url: 'all'
+    url: 'notes'
   },
   {
     name: 'Places',
@@ -80,22 +80,24 @@ const initialStateFolders = [
 class Notes extends React.Component {
   state = {
     notes: [...initialStateNotes],
-    filterPhrase: '',
+    searchPhrase: '',
     folders: [...initialStateFolders],
     current: {
-      folder: 'all',
+      folder: 'notes',
       note: null
     }
   }
 
   selectFolder = (folder) => {
+    const firstNoteFromFolder = folder === 'notes' ? this.state.notes[0] : this.state.notes.find(note => note.folder === folder)
+
     this.setState({
       current: {
         folder: folder,
-        note: null
-      },
-      filterPhrase: ''
+        note: firstNoteFromFolder ? firstNoteFromFolder.id : null
+      }
     })
+    this.resetSearchFilter()
   }
 
   selectNote = (note) => {
@@ -119,17 +121,18 @@ class Notes extends React.Component {
     })
   }
 
-  filterNotes = (phrase) => {
+  searchNotes = (phrase) => {
     this.setState({
-      filterPhrase: phrase,
+      searchPhrase: phrase,
       current: {
-        folder: 'all',
+        folder: 'notes',
         note: null
       }
     })
   }
 
   addNote = (note) => {
+    this.resetSearchFilter()
     this.setState(prevState => ({
       notes: [...prevState.notes, note],
       current: {
@@ -137,6 +140,12 @@ class Notes extends React.Component {
         note: note.id
       }
     }))
+  }
+
+  resetSearchFilter = () => {
+    this.setState({
+      searchPhrase: ''
+    })
   }
 
   deleteNote = () => {
@@ -169,7 +178,8 @@ class Notes extends React.Component {
             addNoteFn={this.addNote}
             current={this.state.current}
             deleteNoteFn={this.deleteNote}
-            filterNotesFn={this.filterNotes}
+            searchNotesFn={this.searchNotes}
+            searchPhrase={this.state.searchPhrase}
           />
           <div className={styles.viewWrapper}>
             <FoldersWrapper
@@ -181,7 +191,7 @@ class Notes extends React.Component {
             <NotesWrapper
               addNoteFn={this.addNote}
               current={this.state.current}
-              filterPhrase={this.state.filterPhrase}
+              searchPhrase={this.state.searchPhrase}
               notes={this.state.notes}
               selectNoteFn={this.selectNote}
             />

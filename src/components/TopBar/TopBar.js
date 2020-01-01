@@ -12,7 +12,8 @@ const TopBar = ({
   addNoteFn,
   current,
   deleteNoteFn,
-  filterNotesFn
+  searchNotesFn,
+  searchPhrase
 }) => (
   <div className={styles.topbar}>
     <div className={styles.dotsContainer}>
@@ -30,7 +31,8 @@ const TopBar = ({
     </div>
     <div className={styles.searchContainer}>
       <Search
-        filterNotesFn={filterNotesFn}
+        searchNotesFn={searchNotesFn}
+        searchPhrase={searchPhrase}
       />
     </div>
   </div>
@@ -40,7 +42,8 @@ TopBar.propTypes = {
   addNoteFn: PropTypes.func.isRequired,
   current: PropTypes.object.isRequired,
   deleteNoteFn: PropTypes.func.isRequired,
-  filterNotesFn: PropTypes.func.isRequired
+  searchNotesFn: PropTypes.func.isRequired,
+  searchPhrase: PropTypes.string.isRequired
 }
 
 export default TopBar
