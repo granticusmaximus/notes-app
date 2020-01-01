@@ -1,6 +1,7 @@
 .search {
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .icon {
@@ -27,6 +28,7 @@
   font-size: 12px;
   color: #b3b3b3;
   background-color: #fbfbfb;
+  padding-right: 23px;
 
   &::placeholder {
     color: #b3b3b3;
@@ -36,4 +38,11 @@
   &:focus {
     outline: none;
   }
+}
+
+.inputReset {
+  position: absolute;
+  right: 6px;
+  color: #b3b3b3;
+  cursor: pointer;
 }
