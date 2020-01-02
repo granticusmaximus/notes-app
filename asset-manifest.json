@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/notes-app/static/css/main.077afb28.chunk.css",
+    "main.js": "/notes-app/static/js/main.19ea8dcc.chunk.js",
+    "main.js.map": "/notes-app/static/js/main.19ea8dcc.chunk.js.map",
+    "runtime-main.js": "/notes-app/static/js/runtime-main.68f5a76e.js",
+    "runtime-main.js.map": "/notes-app/static/js/runtime-main.68f5a76e.js.map",
+    "static/css/2.64a99b10.chunk.css": "/notes-app/static/css/2.64a99b10.chunk.css",
+    "static/js/2.e91a897a.chunk.js": "/notes-app/static/js/2.e91a897a.chunk.js",
+    "static/js/2.e91a897a.chunk.js.map": "/notes-app/static/js/2.e91a897a.chunk.js.map",
+    "index.html": "/notes-app/index.html",
+    "precache-manifest.419cc39fd7845cf9f8d2ad571dea5135.js": "/notes-app/precache-manifest.419cc39fd7845cf9f8d2ad571dea5135.js",
+    "service-worker.js": "/notes-app/service-worker.js",
+    "static/css/2.64a99b10.chunk.css.map": "/notes-app/static/css/2.64a99b10.chunk.css.map",
+    "static/css/main.077afb28.chunk.css.map": "/notes-app/static/css/main.077afb28.chunk.css.map",
+    "static/js/2.e91a897a.chunk.js.LICENSE": "/notes-app/static/js/2.e91a897a.chunk.js.LICENSE",
+    "static/media/Notes.module.scss": "/notes-app/static/media/desktop.9ab31f56.jpg",
+    "static/media/index.scss": "/notes-app/static/media/fontawesome-webfont.fee66e71.woff"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.68f5a76e.js",
+    "static/css/2.64a99b10.chunk.css",
+    "static/js/2.e91a897a.chunk.js",
+    "static/css/main.077afb28.chunk.css",
+    "static/js/main.19ea8dcc.chunk.js"
+  ]
+}
