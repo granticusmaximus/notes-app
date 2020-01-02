@@ -1,24 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import NotesContext from '../../../../context'
 
 import styles from './Button.module.scss'
 
-const DeleteNoteBtn = ({ deleteNoteFn, current }) => {
-  const buttonStyle = current.note !== null ? styles.btn : styles.btnDisabled
-
+const DeleteNoteBtn = ({ deleteNoteFn }) => {
   return (
-    <button
-      className={buttonStyle}
-      onClick={deleteNoteFn}
-      disabled={current.note === null}
-    >
-      <i className='fa fa-trash-o' />
-    </button>
+    <NotesContext.Consumer>
+      {
+        context => (
+          <button
+            className={`${context.current.note !== null ? styles.btn : styles.btnDisabled}`}
+            onClick={deleteNoteFn}
+            disabled={context.current.note === null}
+          >
+            <i className='fa fa-trash-o' />
+          </button>
+        )
+      }
+    </NotesContext.Consumer>
   )
 }
 
 DeleteNoteBtn.propTypes = {
-  current: PropTypes.object.isRequired,
   deleteNoteFn: PropTypes.func.isRequired
 }
 

@@ -10,10 +10,8 @@ import styles from './TopBar.module.scss'
 
 const TopBar = ({
   addNoteFn,
-  current,
   deleteNoteFn,
-  searchNotesFn,
-  searchPhrase
+  searchNotesFn
 }) => (
   <div className={styles.topbar}>
     <div className={styles.dotsContainer}>
@@ -22,17 +20,14 @@ const TopBar = ({
     <div className={styles.buttonsContainer}>
       <AddNoteBtn
         addNoteFn={addNoteFn}
-        current={current}
       />
       <DeleteNoteBtn
-        current={current}
         deleteNoteFn={deleteNoteFn}
       />
     </div>
     <div className={styles.searchContainer}>
       <Search
         searchNotesFn={searchNotesFn}
-        searchPhrase={searchPhrase}
       />
     </div>
   </div>
@@ -40,10 +35,8 @@ const TopBar = ({
 
 TopBar.propTypes = {
   addNoteFn: PropTypes.func.isRequired,
-  current: PropTypes.object.isRequired,
   deleteNoteFn: PropTypes.func.isRequired,
   searchNotesFn: PropTypes.func.isRequired,
-  searchPhrase: PropTypes.string.isRequired
 }
 
 export default TopBar

@@ -5,7 +5,7 @@ import styles from '../FoldersWrapper.module.scss'
 
 class NewFolderInput extends React.Component {
   validateFolderName = (e) => {
-    const { addFolderFn, toggleFolderCreation } = this.props
+    const { addFolderFn, toggleFolderCreationFn } = this.props
     const name = e.target.value
 
     if (name !== '') {
@@ -15,7 +15,7 @@ class NewFolderInput extends React.Component {
       })
     }
 
-    toggleFolderCreation()
+    toggleFolderCreationFn()
   }
 
   render () {
@@ -35,7 +35,7 @@ class NewFolderInput extends React.Component {
 
 NewFolderInput.propTypes = {
   addFolderFn: PropTypes.func.isRequired,
-  toggleFolderCreation: PropTypes.func.isRequired
+  toggleFolderCreationFn: PropTypes.func.isRequired
 }
 
 export default NewFolderInput

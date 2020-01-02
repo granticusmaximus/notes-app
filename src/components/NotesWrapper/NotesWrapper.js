@@ -20,7 +20,6 @@ const NotesWrapper = ({
         notesToRender.map(note => (
           <NoteThumbnail
             key={note.id}
-            current={current}
             note={note}
             selectNoteFn={selectNoteFn}
           />

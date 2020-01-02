@@ -1,10 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import NotesContext from '../../../../context'
 
 import styles from './Search.module.scss'
 
 class Search extends React.Component {
-  handleChange = (e) => {
+  handleChange = e => {
     this.props.searchNotesFn(e.target.value)
   }
 
@@ -14,32 +15,37 @@ class Search extends React.Component {
 
   render () {
     return (
-      <div className={styles.search}>
-        <div className={styles.icon}>
-          <i className='fa fa-search' />
-        </div>
-        <input
-          className={styles.input}
-          type='text'
-          placeholder='Search'
-          onChange={this.handleChange}
-          value={this.props.searchPhrase}
-        />
+      <NotesContext.Consumer>
         {
-          this.props.searchPhrase !== '' &&
-            <i
-              onClick={this.handleClearInput}
-              className={`${styles.inputReset} fas fa-times-circle`}
-            />
+          context => (
+            <div className={styles.search}>
+              <div className={styles.icon}>
+                <i className='fa fa-search' />
+              </div>
+              <input
+                className={styles.input}
+                type='text'
+                placeholder='Search'
+                onChange={this.handleChange}
+                value={context.searchPhrase}
+              />
+              {
+                context.searchPhrase !== '' &&
+                  <i
+                    onClick={this.handleClearInput}
+                    className={`${styles.inputReset} fas fa-times-circle`}
+                  />
+              }
+            </div>
+          )
         }
-      </div>
+      </NotesContext.Consumer>
     )
   }
 }
 
 Search.propTypes = {
-  searchNotesFn: PropTypes.func.isRequired,
-  searchPhrase: PropTypes.string.isRequired
+  searchNotesFn: PropTypes.func.isRequired
 }
 
 export default Search

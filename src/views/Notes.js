@@ -7,7 +7,9 @@ import NotesWrapper from '../components/NotesWrapper/NotesWrapper'
 import Preview from '../components/Preview/Preview'
 import TopBar from '../components/TopBar/TopBar'
 
-const initialStateNotes = [
+import NotesContext from '../context'
+
+const initialNotes = [
   {
     content: 'Good things came in small sizes for Coca-Cola last quarter. The company reported sales that topped forecasts, thanks in part to a double-digit increase in volume for its 7.5-ounce mini cans. The smaller-sized cans appeal to more health-conscious consumers who are increasingly watching what they drink and eat but may not want to switch to diet sodas that contain artificial sweeteners and other chemicals. The word "diet" did not appear once in the companys earnings release and was not mentioned on the conference call with analysts on Friday morning either.',
     folder: 'random',
@@ -58,7 +60,7 @@ const initialStateNotes = [
   }
 ]
 
-const initialStateFolders = [
+const initialFolders = [
   {
     name: 'Notes',
     url: 'notes'
@@ -79,9 +81,9 @@ const initialStateFolders = [
 
 class Notes extends React.Component {
   state = {
-    notes: [...initialStateNotes],
+    notes: [...initialNotes],
     searchPhrase: '',
-    folders: [...initialStateFolders],
+    folders: [...initialFolders],
     current: {
       folder: 'notes',
       note: null
@@ -171,37 +173,42 @@ class Notes extends React.Component {
   }
 
   render () {
+    const { current, searchPhrase } = this.state
+    const contextValues = {
+      current: current,
+      searchPhrase: searchPhrase
+    }
+
     return (
-      <div className={styles.desktop}>
-        <div className={styles.appWrapper}>
-          <TopBar
-            addNoteFn={this.addNote}
-            current={this.state.current}
-            deleteNoteFn={this.deleteNote}
-            searchNotesFn={this.searchNotes}
-            searchPhrase={this.state.searchPhrase}
-          />
-          <div className={styles.viewWrapper}>
-            <FoldersWrapper
-              currentFolder={this.state.current.folder}
-              folders={this.state.folders}
-              selectFolderFn={this.selectFolder}
-              addFolderFn={this.addFolder}
-            />
-            <NotesWrapper
+      <NotesContext.Provider value={contextValues}>
+        <div className={styles.desktop}>
+          <div className={styles.appWrapper}>
+            <TopBar
               addNoteFn={this.addNote}
-              current={this.state.current}
-              searchPhrase={this.state.searchPhrase}
-              notes={this.state.notes}
-              selectNoteFn={this.selectNote}
+              deleteNoteFn={this.deleteNote}
+              searchNotesFn={this.searchNotes}
             />
-            <Preview
-              note={(this.state.notes).find((note) => note.id === this.state.current.note)}
-              editFn={this.editNote}
-            />
+            <div className={styles.viewWrapper}>
+              <FoldersWrapper
+                folders={this.state.folders}
+                selectFolderFn={this.selectFolder}
+                addFolderFn={this.addFolder}
+              />
+              <NotesWrapper
+                addNoteFn={this.addNote}
+                current={this.state.current}
+                searchPhrase={this.state.searchPhrase}
+                notes={this.state.notes}
+                selectNoteFn={this.selectNote}
+              />
+              <Preview
+                note={(this.state.notes).find((note) => note.id === this.state.current.note)}
+                editFn={this.editNote}
+              />
+            </div>
           </div>
         </div>
-      </div>
+      </NotesContext.Provider>
     )
   }
 }

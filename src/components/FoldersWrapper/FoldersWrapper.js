@@ -11,21 +11,20 @@ class FoldersWrapper extends React.Component {
     newFolderIsCreated: false
   }
 
-  toggleFolderCreation = () => {
+  handleNewFolderClick = () => {
     this.setState({
       newFolderIsCreated: !this.state.newFolderIsCreated
     })
   }
 
   render () {
-    const { currentFolder, folders, selectFolderFn, addFolderFn } = this.props
+    const { folders, selectFolderFn, addFolderFn } = this.props
     return (
       <div className={styles.wrapper}>
         {
           folders.map(folder => (
             <Folder
               key={folder.url}
-              currentFolder={currentFolder}
               folder={folder}
               selectFolderFn={selectFolderFn}
             />
@@ -34,13 +33,13 @@ class FoldersWrapper extends React.Component {
         {
           this.state.newFolderIsCreated &&
             <NewFolderInput
-              toggleFolderCreation={this.toggleFolderCreation}
+              toggleFolderCreationFn={this.handleNewFolderClick}
               addFolderFn={addFolderFn}
             />
         }
         <button
           className={styles.addBtn}
-          onClick={this.toggleFolderCreation}
+          onClick={this.handleNewFolderClick}
         >
           <div className={styles.addBtnIcon}>
             +
@@ -54,7 +53,6 @@ class FoldersWrapper extends React.Component {
 
 FoldersWrapper.propTypes = {
   addFolderFn: PropTypes.func.isRequired,
-  currentFolder: PropTypes.string,
   folders: PropTypes.array.isRequired,
   selectFolderFn: PropTypes.func.isRequired
 }
