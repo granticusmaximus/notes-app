@@ -100,7 +100,7 @@ class Notes extends React.Component {
     this.resetSearchFilter()
   }
 
-  selectNote = (note) => {
+  selectNote = note => {
     this.setState(prevState => ({
       current: {
         ...prevState.current,
@@ -109,7 +109,7 @@ class Notes extends React.Component {
     }))
   }
 
-  editNote = (e) => {
+  editNote = e => {
     const notesCopy = [...this.state.notes]
 
     const notesToEdit = notesCopy.findIndex((note) => note.id === this.state.current.note)
@@ -121,7 +121,7 @@ class Notes extends React.Component {
     })
   }
 
-  searchNotes = (phrase) => {
+  searchNotes = phrase => {
     this.setState({
       searchPhrase: phrase,
       current: {
@@ -131,7 +131,7 @@ class Notes extends React.Component {
     })
   }
 
-  addNote = (note) => {
+  addNote = note => {
     this.resetSearchFilter()
     this.setState(prevState => ({
       notes: [...prevState.notes, note],
@@ -164,7 +164,7 @@ class Notes extends React.Component {
     }
   }
 
-  addFolder = (folder) => {
+  addFolder = folder => {
     this.setState(prevState => ({
       folders: [...prevState.folders, folder]
     }))
