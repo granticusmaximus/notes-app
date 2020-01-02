@@ -90,6 +90,51 @@ class Notes extends React.Component {
     }
   }
 
+  addFolder = folder => {
+    this.setState(prevState => ({
+      folders: [...prevState.folders, folder]
+    }))
+  }
+
+  addNote = note => {
+    this.resetSearchFilter()
+    this.setState(prevState => ({
+      notes: [...prevState.notes, note],
+      current: {
+        ...prevState.current,
+        note: note.id
+      }
+    }))
+  }
+
+  deleteNote = () => {
+    const notes = [...this.state.notes]
+    const noteToDelete = notes.findIndex((note) => note.id === this.state.current.note)
+
+    if (noteToDelete !== -1) {
+      notes.splice(noteToDelete, 1)
+      this.setState(prevState => ({
+        notes: notes,
+        current: {
+          ...prevState.current,
+          note: null
+        }
+      }))
+    }
+  }
+
+  editNote = e => {
+    const notesCopy = [...this.state.notes]
+
+    const notesToEdit = notesCopy.findIndex((note) => note.id === this.state.current.note)
+    notesCopy[notesToEdit].content = e.target.value
+    notesCopy[notesToEdit].editDate = new Date()
+
+    this.setState({
+      notes: [...notesCopy]
+    })
+  }
+
   selectFolder = (folder) => {
     const firstNoteFromFolder = folder === 'notes' ? this.state.notes[0] : this.state.notes.find(note => note.folder === folder)
 
@@ -111,18 +156,6 @@ class Notes extends React.Component {
     }))
   }
 
-  editNote = e => {
-    const notesCopy = [...this.state.notes]
-
-    const notesToEdit = notesCopy.findIndex((note) => note.id === this.state.current.note)
-    notesCopy[notesToEdit].content = e.target.value
-    notesCopy[notesToEdit].editDate = new Date()
-
-    this.setState({
-      notes: [...notesCopy]
-    })
-  }
-
   searchNotes = phrase => {
     this.setState({
       searchPhrase: phrase,
@@ -133,43 +166,10 @@ class Notes extends React.Component {
     })
   }
 
-  addNote = note => {
-    this.resetSearchFilter()
-    this.setState(prevState => ({
-      notes: [...prevState.notes, note],
-      current: {
-        ...prevState.current,
-        note: note.id
-      }
-    }))
-  }
-
   resetSearchFilter = () => {
     this.setState({
       searchPhrase: ''
     })
-  }
-
-  deleteNote = () => {
-    const notes = [...this.state.notes]
-    const noteToDelete = notes.findIndex((note) => note.id === this.state.current.note)
-
-    if (noteToDelete !== -1) {
-      notes.splice(noteToDelete, 1)
-      this.setState(prevState => ({
-        notes: notes,
-        current: {
-          ...prevState.current,
-          note: null
-        }
-      }))
-    }
-  }
-
-  addFolder = folder => {
-    this.setState(prevState => ({
-      folders: [...prevState.folders, folder]
-    }))
   }
 
   render () {
