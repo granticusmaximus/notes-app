@@ -5,17 +5,38 @@ import NoteThumbnail from './components/NoteThumbnail'
 
 import styles from './NotesWrapper.module.scss'
 
-const NotesWrapper = ({
-  current,
-  searchPhrase,
-  notes,
-  selectNoteFn
-}) => {
+// const NotesWrapper = ({
+//   current,
+//   searchPhrase,
+//   notes,
+//   selectNoteFn
+// }) => {
+//   let notesToRender = current.folder === 'notes' ? notes : notes.filter((note) => note.folder === current.folder)
+//   notesToRender = notesToRender.filter((note) => note.content.includes(searchPhrase))
+//
+//   return (
+//     <div className={styles.wrapper}>
+//       {
+//         notesToRender.map(note => (
+//           <NoteThumbnail
+//             key={note.id}
+//             note={note}
+//             selectNoteFn={selectNoteFn}
+//           />
+//         ))
+//       }
+//     </div>
+//   )
+// }
+
+const NotesWrapper = React.forwardRef((props, ref) => {
+  const { current, notes, searchPhrase, selectNoteFn } = props
+
   let notesToRender = current.folder === 'notes' ? notes : notes.filter((note) => note.folder === current.folder)
   notesToRender = notesToRender.filter((note) => note.content.includes(searchPhrase))
 
   return (
-    <div className={styles.wrapper}>
+    <div ref={ref} className={styles.wrapper}>
       {
         notesToRender.map(note => (
           <NoteThumbnail
@@ -27,12 +48,12 @@ const NotesWrapper = ({
       }
     </div>
   )
-}
+})
 
 NotesWrapper.propTypes = {
   current: PropTypes.object,
-  searchPhrase: PropTypes.string,
   notes: PropTypes.array.isRequired,
+  searchPhrase: PropTypes.string,
   selectNoteFn: PropTypes.func.isRequired
 }
 

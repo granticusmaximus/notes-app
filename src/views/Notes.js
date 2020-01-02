@@ -80,14 +80,20 @@ const initialFolders = [
 ]
 
 class Notes extends React.Component {
-  state = {
-    notes: [...initialNotes],
-    searchPhrase: '',
-    folders: [...initialFolders],
-    current: {
-      folder: 'notes',
-      note: null
+  constructor (props) {
+    super(props)
+
+    this.state = {
+      notes: [...initialNotes],
+      searchPhrase: '',
+      folders: [...initialFolders],
+      current: {
+        folder: 'notes',
+        note: null
+      }
     }
+
+    this.notesWrapperRef = React.createRef()
   }
 
   addFolder = folder => {
@@ -104,7 +110,7 @@ class Notes extends React.Component {
         ...prevState.current,
         note: note.id
       }
-    }))
+    }), () => this.scrollNotesWrapperToBottom())
   }
 
   deleteNote = () => {
@@ -132,6 +138,14 @@ class Notes extends React.Component {
 
     this.setState({
       notes: [...notesCopy]
+    })
+  }
+
+  scrollNotesWrapperToBottom = () => {
+    const notesWrapper = this.notesWrapperRef.current
+    notesWrapper.scrollTo({
+      top: notesWrapper.scrollHeight,
+      behavior: 'smooth'
     })
   }
 
@@ -200,6 +214,7 @@ class Notes extends React.Component {
                 searchPhrase={this.state.searchPhrase}
                 notes={this.state.notes}
                 selectNoteFn={this.selectNote}
+                ref={this.notesWrapperRef}
               />
               <Preview
                 note={(this.state.notes).find((note) => note.id === this.state.current.note)}
