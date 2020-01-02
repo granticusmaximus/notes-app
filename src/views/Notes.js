@@ -187,7 +187,7 @@ class Notes extends React.Component {
   }
 
   render () {
-    const { current, searchPhrase } = this.state
+    const { current, folders, notes, searchPhrase } = this.state
     const contextValues = {
       current: current,
       searchPhrase: searchPhrase
@@ -204,20 +204,20 @@ class Notes extends React.Component {
             />
             <div className={styles.viewWrapper}>
               <FoldersWrapper
-                folders={this.state.folders}
+                folders={folders}
                 selectFolderFn={this.selectFolder}
                 addFolderFn={this.addFolder}
               />
               <NotesWrapper
                 addNoteFn={this.addNote}
-                current={this.state.current}
-                searchPhrase={this.state.searchPhrase}
-                notes={this.state.notes}
+                current={current}
+                searchPhrase={searchPhrase}
+                notes={notes}
                 selectNoteFn={this.selectNote}
                 ref={this.notesWrapperRef}
               />
               <Preview
-                note={(this.state.notes).find((note) => note.id === this.state.current.note)}
+                note={(notes).find((note) => note.id === current.note)}
                 editFn={this.editNote}
               />
             </div>
