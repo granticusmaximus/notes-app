@@ -5,30 +5,6 @@ import NoteThumbnail from './components/NoteThumbnail'
 
 import styles from './NotesWrapper.module.scss'
 
-// const NotesWrapper = ({
-//   current,
-//   searchPhrase,
-//   notes,
-//   selectNoteFn
-// }) => {
-//   let notesToRender = current.folder === 'notes' ? notes : notes.filter((note) => note.folder === current.folder)
-//   notesToRender = notesToRender.filter((note) => note.content.includes(searchPhrase))
-//
-//   return (
-//     <div className={styles.wrapper}>
-//       {
-//         notesToRender.map(note => (
-//           <NoteThumbnail
-//             key={note.id}
-//             note={note}
-//             selectNoteFn={selectNoteFn}
-//           />
-//         ))
-//       }
-//     </div>
-//   )
-// }
-
 const NotesWrapper = React.forwardRef((props, ref) => {
   const { current, notes, searchPhrase, selectNoteFn } = props
 
