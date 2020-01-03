@@ -16,7 +16,7 @@ const NoteThumbnail = ({
       context => (
         <Link
           className={note.id === context.current.note ? styles.thumbnailActive : styles.thumbnail}
-          to={`/${note.folder}/${note.id}`}
+          to={`/notes-app/${note.folder}/${note.id}`}
           onClick={() => selectNoteFn(note.id)}
         >
           <>

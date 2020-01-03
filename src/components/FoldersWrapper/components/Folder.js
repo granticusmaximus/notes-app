@@ -16,7 +16,7 @@ const Folder = ({
         <Link
           className={folder.url === context.current.folder ? styles.folderLabelActive : styles.folderLabel}
           key={folder.url}
-          to={`/${folder.url}`}
+          to={`/notes-app/${folder.url}`}
           onClick={() => selectFolderFn(folder.url)}
         >
           {folder.name}
