@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import NotesContext from '../../../../context'
+import NotesContext from '../../../../utils/context'
 
 import styles from './Button.module.scss'
 

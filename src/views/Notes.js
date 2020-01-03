@@ -7,8 +7,8 @@ import NotesWrapper from '../components/NotesWrapper/NotesWrapper'
 import Preview from '../components/Preview/Preview'
 import TopBar from '../components/TopBar/TopBar'
 
-import NotesContext from '../context'
-import { initialNotes, initialFolders } from '../initialState'
+import NotesContext from '../utils/context'
+import { initialNotes, initialFolders } from '../utils/initialState'
 
 class Notes extends React.Component {
   constructor (props) {
