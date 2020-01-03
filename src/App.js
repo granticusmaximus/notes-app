@@ -6,7 +6,11 @@ import {
   Switch
 } from 'react-router-dom'
 
+import { initializeGA } from './utils/ga'
+
 import Notes from './views/Notes'
+
+initializeGA()
 
 class App extends React.Component {
   render () {
