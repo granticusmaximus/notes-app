@@ -20,9 +20,13 @@ const NoteThumbnail = ({
           onClick={() => selectNoteFn(note.id)}
         >
           <>
-            <p className={styles.thumbnailHeader}>
-              {`${note.content.length > 25 ? note.content.slice(0, 25) + '...' : note.content}`}
-            </p>
+            {note.content ? (
+              <p className={styles.thumbnailHeader}>
+                {note.content.length > 25 ? note.content.slice(0, 25) + '...' : note.content}
+              </p>
+            ) : (
+              <p className={styles.thumbnailHeaderEmpty}>Empty note</p>
+            )}
             <p className={styles.thumbnailDate}>
               {moment(note.editDate).format('DD.MM.YYYY')}
             </p>
